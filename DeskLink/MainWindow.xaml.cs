@@ -57,7 +57,7 @@ namespace DeskLink
 			_shortcut.RegisterQuickOpen(this, "Alt+Space");
 			Title = $"DeskLink - {_vm.Items.Count} links";
 		}
-		
+
 		private void OnUnloaded(object sender, RoutedEventArgs e) => _shortcut.UnregisterQuickOpen(this);
 
 		private async void OnQuickOpenRequested()
@@ -171,7 +171,7 @@ namespace DeskLink
 					CreatedAt = DateTime.UtcNow,
 					UpdatedAt = DateTime.UtcNow
 				};
-				
+
 				_vm.Selected = newLink;
 				_vm.StatusText = "New link created. Edit and click Save.";
 			}
@@ -213,7 +213,7 @@ namespace DeskLink
 					selected.Id = Guid.NewGuid();
 					selected.CreatedAt = DateTime.UtcNow;
 					selected.UpdatedAt = DateTime.UtcNow;
-					
+
 					await _vm.NewLinkAsync(selected);
 					System.Windows.MessageBox.Show($"'{selected.Name}' added successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
 				}
