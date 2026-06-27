@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.IO;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -8,7 +8,7 @@ using DeskLink.Core.Settings;
 namespace DeskLink.Infrastructure.Services
 {
 	/// <summary>
-	/// JSON ÆÄÀÏ ±â¹İ ¼³Á¤ °ü¸®
+	/// JSON íŒŒì¼ ê¸°ë°˜ ì„¤ì • ê´€ë¦¬
 	/// </summary>
 	public class SettingsService : ISettingsService
 	{

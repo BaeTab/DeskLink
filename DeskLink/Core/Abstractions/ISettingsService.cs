@@ -1,10 +1,10 @@
-using System.Threading.Tasks;
+ï»¿using System.Threading.Tasks;
 using DeskLink.Core.Settings;
 
 namespace DeskLink.Core.Abstractions
 {
 	/// <summary>
-	/// ¾Û ¼³Á¤ ·Îµå/ÀúÀå ¼­ºñ½º ÀÎÅÍÆäÀÌ½º
+	/// ì•± ì„¤ì • ë¡œë“œ/ì €ì¥ ì„œë¹„ìŠ¤ ì¸í„°í˜ì´ìŠ¤
 	/// </summary>
 	public interface ISettingsService
 	{

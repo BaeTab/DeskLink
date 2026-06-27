@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Runtime.InteropServices;
 using System.Windows;
 using DeskLink.Core.Abstractions;
@@ -6,7 +6,7 @@ using DeskLink.Core.Abstractions;
 namespace DeskLink.Infrastructure.Services
 {
 	/// <summary>
-	/// Àü¿ª ´ÜÃàÅ°(Alt+Space µî) µî·Ï/ÇØÁ¦. RegisterHotKey Win32 API »ç¿ë.
+	/// ì „ì—­ ë‹¨ì¶•í‚¤(Alt+Space ë“±) ë“±ë¡/í•´ì œ. RegisterHotKey Win32 API ì‚¬ìš©.
 	/// </summary>
 	public class ShortcutService : IShortcutService
 	{
@@ -19,7 +19,7 @@ namespace DeskLink.Infrastructure.Services
 
 		private static (uint mod, uint vk) ParseGesture(string gesture)
 		{
-			// °£ÀÌ ÆÄ¼­: Alt+Space ¸¸ ¿ì¼± Áö¿ø
+			// ê°„ì´ íŒŒì„œ: Alt+Space ë§Œ ìš°ì„  ì§€ì›
 			return (0x0001, 0x20); // MOD_ALT, VK_SPACE
 		}
 

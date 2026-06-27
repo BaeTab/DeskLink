@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
@@ -6,24 +6,24 @@ using System.Windows.Data;
 namespace DeskLink.Core.Converters
 {
 	/// <summary>
-	/// null °ªÀ» Visibility·Î º¯È¯: null -> Collapsed, not null -> Visible
-	/// DevExpress POCO ViewModel ÇÁ·Ï½Ã °´Ã¼µµ Á¤È®ÇÏ°Ô Ã³¸®
+	/// null ê°’ì„ Visibilityë¡œ ë³€í™˜: null -> Collapsed, not null -> Visible
+	/// DevExpress POCO ViewModel í”„ë¡ì‹œ ê°ì²´ë„ ì •í™•í•˜ê²Œ ì²˜ë¦¬
 	/// </summary>
 	public class NullToVisibilityConverter : IValueConverter
 	{
 		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
 		{
-			// null Ã¼Å©
+			// null ì²´í¬
 			if (value == null)
 				return Visibility.Collapsed;
 
-			// DevExpress POCO ÇÁ·Ï½Ã °´Ã¼ Ã³¸®
-			// ÇÁ·Ï½Ã °´Ã¼´Â nullÀÌ ¾Æ´ÏÁö¸¸ ½ÇÁ¦ °ªÀÌ ¾øÀ» ¼ö ÀÖÀ½
+			// DevExpress POCO í”„ë¡ì‹œ ê°ì²´ ì²˜ë¦¬
+			// í”„ë¡ì‹œ ê°ì²´ëŠ” nullì´ ì•„ë‹ˆì§€ë§Œ ì‹¤ì œ ê°’ì´ ì—†ì„ ìˆ˜ ìˆìŒ
 			var type = value.GetType();
 			if (type.FullName?.Contains("EntityProxyModule") == true ||
 	  type.FullName?.Contains("Castle.Proxies") == true)
 			{
-				// ÇÁ·Ï½Ã °´Ã¼ÀÇ ½ÇÁ¦ ¼Ó¼º È®ÀÎ
+				// í”„ë¡ì‹œ ê°ì²´ì˜ ì‹¤ì œ ì†ì„± í™•ì¸
 				try
 				{
 					var props = type.GetProperties();
@@ -46,7 +46,7 @@ namespace DeskLink.Core.Converters
 	}
 
 	/// <summary>
-	/// null °ªÀ» Visibility·Î º¯È¯ (¿ªÀü): null -> Visible, not null -> Collapsed
+	/// null ê°’ì„ Visibilityë¡œ ë³€í™˜ (ì—­ì „): null -> Visible, not null -> Collapsed
 	/// </summary>
 	public class InverseNullToVisibilityConverter : IValueConverter
 	{

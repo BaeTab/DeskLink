@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -7,7 +7,7 @@ using DeskLink.Core.Models;
 namespace DeskLink.Core.Abstractions
 {
  /// <summary>
- /// ¸µÅ© ÀúÀå¼Ò ÀÎÅÍÆäÀÌ½º - CRUD ¹× °Ë»ö
+ /// ë§í¬ ì €ì¥ì†Œ ì¸í„°í˜ì´ìŠ¤ - CRUD ë° ê²€ìƒ‰
  /// </summary>
  public interface ILinkRepository
  {

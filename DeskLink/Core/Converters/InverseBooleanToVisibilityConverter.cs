@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
@@ -6,7 +6,7 @@ using System.Windows.Data;
 namespace DeskLink.Core.Converters
 {
 	/// <summary>
-	/// bool °ªÀ» Visibility·Î º¯È¯(¿ªº¯È¯): true -> Collapsed, false -> Visible
+	/// bool ê°’ì„ Visibilityë¡œ ë³€í™˜(ì—­ë³€í™˜): true -> Collapsed, false -> Visible
 	/// </summary>
 	public class InverseBooleanToVisibilityConverter : IValueConverter
 	{

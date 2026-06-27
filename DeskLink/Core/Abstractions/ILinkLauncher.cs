@@ -1,11 +1,11 @@
-using System.Threading;
+ï»¿using System.Threading;
 using System.Threading.Tasks;
 using DeskLink.Core.Models;
 
 namespace DeskLink.Core.Abstractions
 {
  /// <summary>
- /// ¸µÅ© ½ÇÇà ¼­ºñ½º ÀÎÅÍÆäÀÌ½º
+ /// ë§í¬ ì‹¤í–‰ ì„œë¹„ìŠ¤ ì¸í„°í˜ì´ìŠ¤
  /// </summary>
  public interface ILinkLauncher
  {

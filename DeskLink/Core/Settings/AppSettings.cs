@@ -1,7 +1,7 @@
-namespace DeskLink.Core.Settings
+ï»¿namespace DeskLink.Core.Settings
 {
 	/// <summary>
-	/// ¾Û ¼³Á¤ ¸ğµ¨ (¿ä¾à)
+	/// ì•± ì„¤ì • ëª¨ë¸ (ìš”ì•½)
 	/// </summary>
 	public class AppSettings
 	{
@@ -9,10 +9,10 @@ namespace DeskLink.Core.Settings
 		public Hotkeys Hotkeys { get; set; } = new Hotkeys();
 		public HealthCheckOptions HealthCheck { get; set; } = new HealthCheckOptions();
 		public SyncOptions Sync { get; set; } = new SyncOptions();
-		public string CurrentRole { get; set; } = "Viewer"; // ¿ªÇÒ
+		public string CurrentRole { get; set; } = "Viewer"; // ì—­í• 
 	}
 
 	public class Hotkeys { public string QuickOpen { get; set; } = "Alt+Space"; }
 	public class HealthCheckOptions { public int IntervalMinutes { get; set; } = 10; public int TimeoutMs { get; set; } = 3000; }
-	public class SyncOptions { public string Mode { get; set; } = "Pull"; public string SharedPath { get; set; } = @"\\\\NAS\\DeskLink\\repo.json"; }
+	public class SyncOptions { public string Mode { get; set; } = "Pull"; public string SharedPath { get; set; } = @"\\NAS\DeskLink\repo.json"; }
 }

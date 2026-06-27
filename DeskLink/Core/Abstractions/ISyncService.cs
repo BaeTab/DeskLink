@@ -1,10 +1,10 @@
-using System.Threading;
+ï»¿using System.Threading;
 using System.Threading.Tasks;
 
 namespace DeskLink.Core.Abstractions
 {
 	/// <summary>
-	/// °øÀ¯ ÀúÀå¼Ò¿Í µ¿±âÈ­ ¼­ºñ½º ÀÎÅÍÆäÀÌ½º
+	/// ê³µìœ  ì €ì¥ì†Œì™€ ë™ê¸°í™” ì„œë¹„ìŠ¤ ì¸í„°í˜ì´ìŠ¤
 	/// </summary>
 	public interface ISyncService
 	{

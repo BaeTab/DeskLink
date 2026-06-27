@@ -1,53 +1,116 @@
-using System;
+ï»¿using System;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.CompilerServices;
+using System.Text.Json.Serialization;
 
 namespace DeskLink.Core.Models
 {
 	/// <summary>
-	/// ¸µÅ© Ç×¸ñ µµ¸ŞÀÎ ¸ğµ¨ (ÇÙ½É ¼Ó¼º¸¸ ¿ì¼± Á¤ÀÇ)
+	/// ë§í¬ í•­ëª© ë„ë©”ì¸ ëª¨ë¸ (í•µì‹¬ ì†ì„±ë§Œ ìš°ì„  ì •ì˜)
+	/// í‘œì‹œì— ì‚¬ìš©ë˜ëŠ” ê°€ë³€ ì†ì„±ì€ INotifyPropertyChanged ë¡œ UI ì™€ ì¦‰ì‹œ ë™ê¸°í™”í•œë‹¤.
 	/// </summary>
-	public class LinkItem
+	public class LinkItem : INotifyPropertyChanged
 	{
-		// °íÀ¯ ½Äº°ÀÚ
+		// ê³ ìœ  ì‹ë³„ì
 		public Guid Id { get; set; }
-		// Ç¥½Ã ÀÌ¸§
-		public string Name { get; set; } = string.Empty;
-		// ¼³¸í
-		public string? Description { get; set; }
-		// ¸µÅ© À¯Çü
-		public LinkType Type { get; set; }
-		// ´ë»ó (URL, °æ·Î, ½ÇÇàÆÄÀÏ µî)
-		public string Target { get; set; } = string.Empty;
-		// ½ÇÇà ÀÎÀÚ
+
+		private string _name = string.Empty;
+		// í‘œì‹œ ì´ë¦„
+		public string Name { get => _name; set => SetField(ref _name, value); }
+
+		private string? _description;
+		// ì„¤ëª…
+		public string? Description { get => _description; set => SetField(ref _description, value); }
+
+		private LinkType _type;
+		// ë§í¬ ì¢…ë¥˜
+		public LinkType Type { get => _type; set { if (SetField(ref _type, value)) OnPropertyChanged(nameof(TypeGlyph)); } }
+
+		private string _target = string.Empty;
+		// ëŒ€ìƒ (URL, ê²½ë¡œ, ì‹¤í–‰íŒŒì¼ ë“±)
+		public string Target { get => _target; set => SetField(ref _target, value); }
+
+		// ì‹¤í–‰ ì¸ì
 		public string? Arguments { get; set; }
-		// ÀÛ¾÷ µğ·ºÅÍ¸®
+		// ì‘ì—… ë””ë ‰í„°ë¦¬
 		public string? WorkingDir { get; set; }
-		// ¾ÆÀÌÄÜ Å°
+		// ì•„ì´ì½˜ í‚¤
 		public string? IconKey { get; set; }
-		// »ö»ó(hex)
-		public string? ColorHex { get; set; }
-		// ÅÂ±×(¼¼¹ÌÄİ·Ğ ¿¬°á ¹®ÀÚ¿­ ÀúÀå ¿¹Á¤)
-		public string? Tags { get; set; }
-		// Ä«Å×°í¸®
-		public string? Category { get; set; }
-		// ¼ÒÀ¯ÀÚ
+
+		private string? _colorHex;
+		// ìƒ‰ìƒ(hex)
+		public string? ColorHex { get => _colorHex; set => SetField(ref _colorHex, value); }
+
+		private string? _tags;
+		// íƒœê·¸(ì„¸ë¯¸ì½œë¡  êµ¬ë¶„ ë¬¸ìì—´ ë“±ì„ ê°€ì •)
+		public string? Tags { get => _tags; set => SetField(ref _tags, value); }
+
+		private string? _category;
+		// ì¹´í…Œê³ ë¦¬
+		public string? Category { get => _category; set => SetField(ref _category, value); }
+
+		// ì†Œìœ ì
 		public string? Owner { get; set; }
-		// °¡½Ã¼º ±ÔÄ¢ Ç¥Çö½Ä
+		// ê°€ì‹œì„± ê·œì¹™ í‘œí˜„ì‹
 		public string? VisibilityRule { get; set; }
-		// »ı¼º/¼öÁ¤/°Ç°­°Ë»ç ½Ã°£
+		// ìƒì„±/ìˆ˜ì •/ê±´ê°•ê²€ì‚¬ ì‹œê°
 		public DateTime CreatedAt { get; set; }
 		public DateTime UpdatedAt { get; set; }
-		public DateTime? LastCheckedAt { get; set; }
-		// °Ç°­ »óÅÂ
-		public LinkHealthStatus Health { get; set; }
+
+		private DateTime? _lastCheckedAt;
+		public DateTime? LastCheckedAt { get => _lastCheckedAt; set => SetField(ref _lastCheckedAt, value); }
+
+		private LinkHealthStatus _health;
+		// ê±´ê°• ìƒíƒœ
+		public LinkHealthStatus Health { get => _health; set => SetField(ref _health, value); }
+
+		// --- ì˜ì†í™”í•˜ì§€ ì•ŠëŠ” ëŸ°íƒ€ì„ í‘œì‹œ ì „ìš© ì†ì„± (EF ë§¤í•‘ ì œì™¸) ---
+
+		private bool _isFavorite;
+		/// <summary>ì¦ê²¨ì°¾ê¸° ì—¬ë¶€. LocalStateService ì—ì„œ ë¡œë“œë˜ì–´ UI ì— ë°˜ì˜.</summary>
+		[NotMapped, JsonIgnore]
+		public bool IsFavorite { get => _isFavorite; set => SetField(ref _isFavorite, value); }
+
+		private int _useCount;
+		/// <summary>ì‹¤í–‰ ë¹ˆë„. LocalStateService ì—ì„œ ë¡œë“œ.</summary>
+		[NotMapped, JsonIgnore]
+		public int UseCount { get => _useCount; set => SetField(ref _useCount, value); }
+
+		/// <summary>íƒ€ì…ë³„ ì´ëª¨ì§€ ê¸€ë¦¬í”„ (íƒ€ì¼ í‘œì‹œìš©).</summary>
+		[NotMapped, JsonIgnore]
+		public string TypeGlyph => Type switch
+		{
+			LinkType.Url => "ğŸŒ",
+			LinkType.File => "ğŸ“„",
+			LinkType.Folder => "ğŸ“",
+			LinkType.Exe => "âš™ï¸",
+			LinkType.Rdp => "ğŸ–¥ï¸",
+			LinkType.Ssh => "ğŸ”‘",
+			_ => "ğŸ”—"
+		};
+
+		public event PropertyChangedEventHandler? PropertyChanged;
+
+		protected void OnPropertyChanged([CallerMemberName] string? name = null)
+			=> PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+
+		protected bool SetField<T>(ref T field, T value, [CallerMemberName] string? name = null)
+		{
+			if (Equals(field, value)) return false;
+			field = value;
+			OnPropertyChanged(name);
+			return true;
+		}
 	}
 
 	/// <summary>
-	/// ¸µÅ© À¯Çü ¿­°ÅÇü
+	/// ë§í¬ ì¢…ë¥˜ ì—´ê±°í˜•
 	/// </summary>
 	public enum LinkType { Url, File, Folder, Exe, Rdp, Ssh, Custom }
 
 	/// <summary>
-	/// ¸µÅ© °Ç°­ »óÅÂ ¿­°ÅÇü
+	/// ë§í¬ ê±´ê°• ìƒíƒœ ì—´ê±°í˜•
 	/// </summary>
 	public enum LinkHealthStatus { Unknown = 0, Ok = 1, Warning = 2, Error = 3 }
 }

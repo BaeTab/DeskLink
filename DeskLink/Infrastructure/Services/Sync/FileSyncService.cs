@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
@@ -11,7 +11,7 @@ using Serilog;
 namespace DeskLink.Infrastructure.Services.Sync
 {
 	/// <summary>
-	/// °øÀ¯ JSON ÆÄÀÏ ±â¹İ µ¿±âÈ­ ±¸Çö (Pull/Push)
+	/// ê³µìœ  JSON íŒŒì¼ ê¸°ë°˜ ë™ê¸°í™” êµ¬í˜„ (Pull/Push)
 	/// </summary>
 	public class FileSyncService : ISyncService
 	{
@@ -24,7 +24,7 @@ namespace DeskLink.Infrastructure.Services.Sync
 
 		public async Task PullAsync(CancellationToken ct = default)
 		{
-			if (!File.Exists(_sharedPath)) { Log.Warning("°øÀ¯ ÆÄÀÏ ¾øÀ½: {Path}", _sharedPath); return; }
+			if (!File.Exists(_sharedPath)) { Log.Warning("ê³µìœ  íŒŒì¼ ì—†ìŒ: {Path}", _sharedPath); return; }
 			var json = await File.ReadAllTextAsync(_sharedPath, ct);
 			using var doc = JsonDocument.Parse(json);
 			var links = doc.RootElement.GetProperty("links");
@@ -32,14 +32,14 @@ namespace DeskLink.Infrastructure.Services.Sync
 			{
 				var id = e.TryGetProperty("id", out var idEl) ? idEl.GetGuid() : Guid.NewGuid();
 				var existing = await _repo.GetAsync(id, ct);
-				if (existing != null) continue; // Ãæµ¹ ¹æÁö: ·ÎÄÃ ¿ì¼±
+				if (existing != null) continue; // ì¶©ëŒ ë°©ì§€: ë¡œì»¬ ìš°ì„ 
 				var name = e.GetProperty("name").GetString() ?? string.Empty;
 				var target = e.GetProperty("target").GetString() ?? string.Empty;
 				var typeStr = e.GetProperty("type").GetString() ?? "Url";
 				Enum.TryParse<LinkType>(typeStr, out var type);
 				await _repo.AddAsync(new LinkItem { Id = id, Name = name, Target = target, Type = type, Health = LinkHealthStatus.Unknown, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow }, ct);
 			}
-			Log.Information("Pull ¿Ï·á: {Path}", _sharedPath);
+			Log.Information("Pull ì™„ë£Œ: {Path}", _sharedPath);
 		}
 
 		public async Task PushAsync(CancellationToken ct = default)
@@ -48,7 +48,7 @@ namespace DeskLink.Infrastructure.Services.Sync
 			var payload = new { version = "1.0", updated = DateTime.UtcNow, links = list.Select(x => new { id = x.Id, name = x.Name, type = x.Type.ToString(), target = x.Target }) };
 			var json = JsonSerializer.Serialize(payload, new JsonSerializerOptions { WriteIndented = true });
 			await File.WriteAllTextAsync(_sharedPath, json, ct);
-			Log.Information("Push ¿Ï·á: {Path}", _sharedPath);
+			Log.Information("Push ì™„ë£Œ: {Path}", _sharedPath);
 		}
 	}
 }

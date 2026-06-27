@@ -23,8 +23,8 @@ namespace DeskLink
 			// Serilog 구성
 			LogConfig.Configure();
 			Log.Information("DeskLink 시작");
-			// 기본 테마 적용
-			ThemeManager.ApplicationThemeName = Theme.Office2019BlackName;
+			// 기본 테마 적용 (ApplicationThemeHelper 권장 API 사용)
+			ApplicationThemeHelper.ApplicationThemeName = Theme.Office2019BlackName;
 		}
 
 		protected override void OnExit(ExitEventArgs e)

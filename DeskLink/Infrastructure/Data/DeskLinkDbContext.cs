@@ -1,21 +1,21 @@
-using DeskLink.Core.Models;
+ï»¿using DeskLink.Core.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace DeskLink.Infrastructure.Data
 {
 	/// <summary>
-	/// EF Core DbContext - SQLite ·ÎÄÃ ÀúÀå¼Ò
+	/// EF Core DbContext - SQLite ë¡œì»¬ ì €ì¥ì†Œ
 	/// </summary>
 	public class DeskLinkDbContext : DbContext
 	{
 		public DeskLinkDbContext(DbContextOptions<DeskLinkDbContext> options) : base(options) { }
 
-		// ¸µÅ© Å×ÀÌºí
+		// ë§í¬ í…Œì´ë¸”
 		public DbSet<LinkItem> Links => Set<LinkItem>();
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
-			// Links Å×ÀÌºí ±¸¼º
+			// Links í…Œì´ë¸” êµ¬ì„±
 			modelBuilder.Entity<LinkItem>(e =>
 			{
 				e.HasKey(x => x.Id);
