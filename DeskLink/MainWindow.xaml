@@ -100,13 +100,13 @@
  Click="OnNewLinkClick" Style="{StaticResource ModernButtonStyle}"/>
  <Button Content="💚 Health Check" Width="130" Height="36" Margin="0,0,8,0"
  Click="OnHealthAllClick" Style="{StaticResource ModernButtonStyle}"/>
- <Button Content="📥 JSON" Width="86" Height="36" Margin="0,0,6,0"
+ <Button Content="📂 JSON" Width="86" Height="36" Margin="0,0,6,0"
  Click="OnImportClick" Style="{StaticResource ModernButtonStyle}" ToolTip="JSON 가져오기"/>
- <Button Content="📤 JSON" Width="86" Height="36" Margin="0,0,6,0"
+ <Button Content="💾 JSON" Width="86" Height="36" Margin="0,0,6,0"
  Click="OnExportClick" Style="{StaticResource ModernButtonStyle}" ToolTip="JSON 내보내기"/>
- <Button Content="📥 CSV" Width="80" Height="36" Margin="0,0,6,0"
+ <Button Content="📂 CSV" Width="80" Height="36" Margin="0,0,6,0"
  Click="OnImportCsvClick" Style="{StaticResource ModernButtonStyle}" ToolTip="CSV 가져오기"/>
- <Button Content="📤 CSV" Width="80" Height="36"
+ <Button Content="💾 CSV" Width="80" Height="36"
  Click="OnExportCsvClick" Style="{StaticResource ModernButtonStyle}" ToolTip="CSV 내보내기"/>
  </StackPanel>
  </Grid>

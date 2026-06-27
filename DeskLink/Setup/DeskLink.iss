@@ -2,7 +2,7 @@
 ; Inno Setup 6.0 이상 필요
 
 #define MyAppName "DeskLink"
-#define MyAppVersion "1.0.0"
+#define MyAppVersion "1.0.1"
 #define MyAppPublisher "DeskLink Team"
 #define MyAppURL "https://github.com/BaeTab/DeskLink"
 #define MyAppExeName "DeskLink.exe"

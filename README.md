@@ -81,7 +81,7 @@
 - [.NET 8.0 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/8.0) (설치 시 자동 안내)
 
 #### 방법 1 — 설치 프로그램 (권장)
-1. [최신 릴리즈](https://github.com/BaeTab/DeskLink/releases/latest) 에서 `DeskLink-Setup-1.0.0.exe` 다운로드
+1. [최신 릴리즈](https://github.com/BaeTab/DeskLink/releases/latest) 에서 `DeskLink-Setup-1.0.1.exe` 다운로드
 2. 실행 후 설치 마법사 진행
 3. 바탕화면 아이콘 / Windows 시작 시 자동 실행을 선택적으로 설정
 
@@ -124,7 +124,7 @@ dotnet run -c Release
 
 **Q. 설치 시 .NET 런타임 오류가 나요.** [.NET 8.0 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/8.0) 을 설치한 뒤 다시 실행하세요.
 
-**Q. 데이터를 다른 PC로 옮기려면?** `📤 JSON` 또는 `📤 CSV` 로 내보낸 뒤 새 PC에서 `📥` 로 가져오세요.
+**Q. 데이터를 다른 PC로 옮기려면?** `💾 JSON` 또는 `💾 CSV` 로 내보낸 뒤 새 PC에서 `📂` 로 가져오세요.
 
 ### 🗺️ 로드맵
 - [ ] v1.1 — 클라우드 동기화 (OneDrive / Dropbox)
@@ -161,7 +161,7 @@ with a global `Alt + Space` hotkey.
 ### 📥 Installation
 **Requirements:** Windows 10/11 (x64) and [.NET 8.0 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/8.0).
 
-**Installer (recommended):** download `DeskLink-Setup-1.0.0.exe` from the [latest release](https://github.com/BaeTab/DeskLink/releases/latest).
+**Installer (recommended):** download `DeskLink-Setup-1.0.1.exe` from the [latest release](https://github.com/BaeTab/DeskLink/releases/latest).
 
 **Build from source:**
 ```bash
